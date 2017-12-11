@@ -5,6 +5,7 @@ var request = require('request');
 var mysql = require('mysql');
 var MysqlJson = require('mysql-json');
 var index = require('./routes/index');
+var _ = require('lodash');
 
 var app = express();
 
@@ -27,10 +28,10 @@ var connection = new MysqlJson({
 // Check connection
 connection.connect((err) => {
   if (err) throw err;
-  console.log('Connected!');
+  console.log('Connected!\n');
 });
 
-
+// Movie API Query Options
 var options = { method: 'GET',
   url: 'https://api.themoviedb.org/3/discover/movie',
   qs:
@@ -43,18 +44,52 @@ var options = { method: 'GET',
      sort_by: 'popularity.desc',
      api_key: 'b7766f055f7482d017a2fbf7f1603ca3' },
      page: '1',
-     page: '2',
-     page: '3',
-     page: '4',
-     page: '5',
   body: '{}' };
 
+// Get JSON from API
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
-  console.log(body);
-});
+  // Make sure Rows don't exist when calling the API and insterting
+  var cleanSQL = "DELETE from movies";
 
+  connection.query(cleanSQL,
+  function(err, response) {
+    if (err) throw err;
+    console.log('Table cleaned!\n');
+  });
+
+  //Process the JSON
+  var body = JSON.parse(body);
+  var body = _.take(body.results, 1);
+  var myJSON = JSON.stringify(body);
+  var body = _.flatten(body);
+
+  //Iterate through JSON and insert Row to DB
+  _.forEach(body, function(item) {
+    connection.insert('movies',
+    {
+        id: item.id,
+        adult: item.adult,
+        backdrop_path: item.backdrop_path,
+        genre_ids: 18,
+        original_language: item.original_language,
+        original_title: item.original_title,
+        overview: item.overview,
+        popularity: item.popularity,
+        poster_path: item.poster_path,
+        release_date: item.release_date,
+        title: item.title,
+        video: item.video,
+        vote_average: item.vote_average,
+        vote_count: item.vote_count
+    },
+      function(err, response) {
+       if (err) throw err;
+       console.log(body);
+     });
+  });
+});
 
 app.use('/', index);
 

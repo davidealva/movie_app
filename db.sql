@@ -9,8 +9,8 @@ CREATE TABLE `movies` (
   `popularity` decimal(10,6) DEFAULT NULL,
   `poster_path` varchar(100) DEFAULT NULL,
   `release_date` datetime DEFAULT NULL,
-	`title`	varchar(100)	DEFAULT	NULL,
-	`video`	varchar(10)	DEFAULT	NULL,
+  `title`	varchar(100)	DEFAULT	NULL,
+  'video`	varchar(10)	DEFAULT	NULL,
 	`vote_average` decimal(4,2) DEFAULT	NULL,
 	`vote_count` int(11) DEFAULT NULL,
 	PRIMARY KEY (`id`)
