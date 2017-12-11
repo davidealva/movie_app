@@ -106,8 +106,7 @@ app.get('/display', function (req, res) {
 });
 
 // Gather page route
-app.get('/gather', function (req, res, next) {
-    callAPI();
+app.get('/gather', function (req, res) {
     res.send('Getting json file.....');
 });
 
@@ -116,6 +115,10 @@ app.get('/data', function(req,res){
     if(err) throw err;
     res.json(rows);
   });
+});
+
+app.get('/gatherData', function(req, res){
+  callAPI();
 });
 
 // catch 404 and forward to error handler
