@@ -54,18 +54,16 @@ var options = { method: 'GET',
 
 function callAPI() {
 
+  // Make sure Rows don't exist when calling the API and insterting
+  connection.query("DELETE from movies",
+  function(err, response) {
+    if (err) throw err;
+    console.log('Table cleaned!\n');
+  });
+
   // Get JSON from API
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
-
-    // Make sure Rows don't exist when calling the API and insterting
-    var cleanSQL = "DELETE from movies";
-
-    connection.query(cleanSQL,
-    function(err, response) {
-      if (err) throw err;
-      console.log('Table cleaned!\n');
-    });
 
     //Process the JSON
     var body = JSON.parse(body);
@@ -108,13 +106,13 @@ app.get('/display', function (req, res) {
 });
 
 // Gather page route
-app.get('/gather', function (req, res) {
-  callAPI();
-  res.send("Insterting JSON from API.....All done!");
+app.get('/gather', function (req, res, next) {
+    callAPI();
+    res.send('Getting json file.....');
 });
 
 app.get('/data', function(req,res){
-  mysqlJson.query('SELECT * FROM data', (err,rows) => {
+  connection.query('SELECT * FROM movies', (err,rows) => {
     if(err) throw err;
     res.json(rows);
   });

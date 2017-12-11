@@ -13,17 +13,8 @@ router.get('/display', function (req, res) {
 });
 
 // // Gather page route
-// router.get('/gather', function (req, res) {
-//   callAPI();
-//   res.send("Insterting JSON from API.....All done!");
+// router.get('/gather', function (req, res, next) {
+//   res.sendFile(path.join(__dirname,'../', 'views', 'gather.html'));
 // });
-//
-router.get('/data', function(req,res){
-  mysqlJson.query('SELECT * FROM data', (err,rows) => {
-    if(err) throw err;
-    res.json(rows);
-  });
-});
-
 
 module.exports = router;
