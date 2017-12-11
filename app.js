@@ -112,7 +112,7 @@ app.get('/gather', function (req, res, next) {
 });
 
 app.get('/data', function(req,res){
-  connection.query('SELECT * FROM movies', (err,rows) => {
+  connection.query('SELECT * FROM movies ORDER BY vote_count DESC', (err,rows) => {
     if(err) throw err;
     res.json(rows);
   });
