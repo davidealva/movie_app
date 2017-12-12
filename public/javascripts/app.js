@@ -1,4 +1,5 @@
 var app = angular.module('myApp',[]);
+
 app.controller('displayController', function($scope, $http) {
     $scope.data = [];
 

@@ -11,6 +11,7 @@
     <title>iCapture Demo - David Alvarado</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    
 
     <!-- angularjs App.js -->
     <script src="/javascripts/app.js"></script>
@@ -48,14 +49,14 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/gather">Gather</a>
+                        <a ui-sref='gather' href="/gather">Gather</a>
                     </li>
                     <li>
-                        <a href="/display">Display</a>
+                        <a ui-sref='display' href="/display">Display</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="/delete">Delete</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -65,6 +66,7 @@
 
     <!-- Page Content -->
     <div class="container" ng-app="myApp">
+
       <div class="row">
         <!-- Jumbotron Header -->
         <header class="jumbotron hero-spacer text-center">
@@ -74,7 +76,6 @@
             <a class="btn btn-default" href="/display" role="button">Display Movies</a>
             <a class="btn btn-default" href="/delete" role="button">Delete Table</a>
         </header>
-
       </div>
 
     </div>
