@@ -107,7 +107,16 @@ app.get('/display', function (req, res) {
 
 // Gather page route
 app.get('/gather', function (req, res) {
-    res.send('Getting json file.....');
+  callAPI();
+  res.send('Done getting JSON file.....');
+});
+
+app.get('/delete', function (req, res) {
+  connection.query("DELETE from movies",
+  function(err, response) {
+    if (err) throw err;
+    console.log('Table cleaned!\n');
+  });
 });
 
 app.get('/data', function(req,res){
@@ -117,9 +126,12 @@ app.get('/data', function(req,res){
   });
 });
 
-app.get('/gatherData', function(req, res){
-  callAPI();
-});
+// app.get('/gatherData', function(req, res){
+//   callAPI(function() {
+//     //res.send('Getting json file.....');
+//     res.send('done!');
+//   });
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -12,9 +12,9 @@ router.get('/display', function (req, res) {
   res.sendFile(path.join(__dirname,'../', 'views', 'display.html'));
 });
 
-// Gather page route
-router.get('/gather', function (req, res, next) {
-  res.sendFile(path.join(__dirname,'../', 'views', 'gather.html'));
-});
+// // Gather page route
+// router.get('/gather', function (req, res, next) {
+//   res.sendFile(path.join(__dirname,'../', 'views', 'gather.html'));
+// });
 
 module.exports = router;
