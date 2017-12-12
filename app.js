@@ -105,6 +105,11 @@ app.get('/display', function (req, res) {
   res.sendFile(path.join(__dirname,'../', 'views', 'display.html'));
 });
 
+// // Disply page route
+// app.get('/modal', function (req, res) {
+//   res.sendFile(path.join(__dirname,'../', 'views', 'movieModal.html'));
+// });
+
 // Gather page route
 app.get('/gather', function (req, res) {
   callAPI();

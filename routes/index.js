@@ -12,6 +12,11 @@ router.get('/display', function (req, res) {
   res.sendFile(path.join(__dirname,'../', 'views', 'display.html'));
 });
 
+// Modal page route
+router.get('/modal', function (req, res) {
+  res.sendFile(path.join(__dirname,'../', 'views', 'movieModal.html'));
+});
+
 // // Gather page route
 // router.get('/gather', function (req, res, next) {
 //   res.sendFile(path.join(__dirname,'../', 'views', 'gather.html'));

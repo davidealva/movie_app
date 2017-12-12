@@ -3,17 +3,56 @@ body {
     /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
+a {
+  color: #4e3a3a;
+}
+
+a:hover {
+  color: orange;
+  text-decoration: none;
+}
+
 a.navbar-brand, .navbar-nav>li>a {
     color: #fff !important;
 }
 .navbar-inverse{
-  background: -webkit-linear-gradient(90deg, #517fa4 10%, #243949 90%); /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(90deg, #517fa4 10%, #243949 90%); /* FF3.6+ */
-  background:     -ms-linear-gradient(90deg, #517fa4 10%, #243949 90%); /* IE10 */
-  background:      -o-linear-gradient(90deg, #517fa4 10%, #243949 90%); /* Opera 11.10+ */
-  background:         linear-gradient(90deg, #517fa4 10%, #243949 90%); /* W3C */
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .btn {
   width: 30%;
+}
+
+img {
+  width: 100%;
+  padding: 20px 20px;
+}
+
+.modal-content {
+  margin-top: 100px;
+  background: #000000;
+  color: #ffffff;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-title {
+  padding-left: 20px;
+}
+
+.modal-body p {
+  padding: 20px;
+}
+
+.modal-footer {
+  border-top: none;
+}
+.btn-default {
+  color: #ffffff;
+  background-color: orange;
+  border: none;
 }

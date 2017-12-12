@@ -1,0 +1,15 @@
+<!-- Modal content-->
+<div id="movieModal.html" type="text/ng-template">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h3 class="modal-title">{{ data.title }} -  {{ data.release_date | date :  "yyyy"}}</h3>
+      <h4 class="modal-title">Average Score: {{ data.vote_average }}</h4>
+    </div>
+    <div class="modal-body">
+      <img class="img-fluid center-block" alt="Responsive image" ng-src="https://image.tmdb.org/t/p/w500/{{ data.backdrop_path }}" alt="">
+      <p>{{ data.overview }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="$dismiss()">Close</button>
+    </div>
+</div>
